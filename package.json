@@ -1,0 +1,15 @@
+{
+  "name": "piano",
+  "private": true,
+  "scripts": {
+    "generate:readme": "node scripts/generate-readme.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
+  }
+}

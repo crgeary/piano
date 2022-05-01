@@ -1,0 +1,12 @@
+events:
+  - date: 2022-04-23
+    action: start
+    description: When I started learning to play
+
+tracks:
+  - date: 2022-04-29
+    url: midi/2022/0001-joy-division-love-will-tear-us-apart.midi
+  - date: 2022-04-29
+    url: midi/2022/0002-tetris-theme.midi
+  - date: 2022-04-29
+    url: midi/2022/0003-crash-bandicoot-theme.midi
