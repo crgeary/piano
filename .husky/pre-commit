@@ -3,4 +3,8 @@
 
 npm run generate:readme
 
+npm run format:check
+npm run ts:check
+npm run lint
+
 git add README.md

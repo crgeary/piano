@@ -1,34 +1,38 @@
 {
-  "name": "piano",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "generate:readme": "node scripts/generate-readme.js",
-    "prepare": "husky install"
-  },
-  "dependencies": {
-    "@octokit/rest": "^18.12.0",
-    "@tonejs/midi": "^2.0.28",
-    "js-yaml": "^4.1.0",
-    "next": "12.1.5",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
-  },
-  "devDependencies": {
-    "@types/js-yaml": "^4.0.5",
-    "@types/node": "17.0.31",
-    "@types/react": "18.0.8",
-    "@types/react-dom": "18.0.3",
-    "autoprefixer": "^10.4.6",
-    "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5",
-    "fs-extra": "^10.1.0",
-    "husky": "^7.0.4",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.24",
-    "typescript": "4.6.4"
-  }
+    "name": "piano",
+    "private": true,
+    "scripts": {
+        "build": "next build",
+        "dev": "next dev",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "generate:readme": "node scripts/generate-readme.js",
+        "lint": "next lint",
+        "start": "next start",
+        "prepare": "husky install",
+        "ts:check": "tsc --noEmit --project tsconfig.json"
+    },
+    "dependencies": {
+        "@octokit/rest": "^18.12.0",
+        "@tonejs/midi": "^2.0.28",
+        "js-yaml": "^4.1.0",
+        "next": "12.1.5",
+        "react": "18.1.0",
+        "react-dom": "18.1.0"
+    },
+    "devDependencies": {
+        "@types/js-yaml": "^4.0.5",
+        "@types/node": "17.0.31",
+        "@types/react": "18.0.8",
+        "@types/react-dom": "18.0.3",
+        "autoprefixer": "^10.4.6",
+        "eslint": "8.14.0",
+        "eslint-config-next": "12.1.5",
+        "fs-extra": "^10.1.0",
+        "husky": "^7.0.4",
+        "postcss": "^8.4.5",
+        "prettier": "^2.6.2",
+        "tailwindcss": "^3.0.24",
+        "typescript": "4.6.4"
+    }
 }
