@@ -1,5 +1,4 @@
 import { NextApiHandler } from "next";
-
 import { wrapper } from "../../../lib/api";
 import { getTimelineData } from "../../../lib/github";
 

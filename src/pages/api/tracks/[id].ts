@@ -1,7 +1,7 @@
 import { NextApiHandler } from "next";
-
-import { wrapper } from "../../../lib/api";
-import { getTimelineData } from "../../../lib/github";
+import { HttpError, wrapper } from "../../../lib/api";
+import { getTimelineData, getTrack } from "../../../lib/github";
+import { midiBase64ToTonejs } from "../../../lib/midi";
 
 const handler: NextApiHandler = async (req, res) => {
   const { id } = req.query;
@@ -12,13 +12,24 @@ const handler: NextApiHandler = async (req, res) => {
   );
 
   if (!track) {
-    throw Error("Not Found");
+    throw new HttpError(404, "Track not found");
   }
+
+  const file = await getTrack(track.url);
+
+  if (!file) {
+    throw new HttpError(404, "Track not found");
+  }
+
+  const midi = midiBase64ToTonejs(file.content);
 
   res.json({
     data: {
       id: `${id}`,
       ...track,
+      size: file.size,
+      content: file.content,
+      ...(midi ? midi.toJSON() : {}),
     },
   });
 };

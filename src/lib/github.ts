@@ -1,6 +1,5 @@
 import { Octokit } from "@octokit/rest";
 import yaml from "js-yaml";
-
 import { YamlData } from "../types/data";
 
 const config = {
@@ -13,15 +12,24 @@ export const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-export const getYamlTimelineDataFromRepo = () => {
-  return octokit.request({
+export const getTimelineData = async () => {
+  const { data } = await octokit.request({
     url: `/repos/${config.owner}/${config.repo}/contents/${config.timelineDataFilePath}`,
   });
+
+  const dataYaml = Buffer.from(data.content, "base64").toString();
+  return yaml.load(dataYaml) as YamlData;
 };
 
-export const getTimelineData = async () => {
-  const { data: response } = await getYamlTimelineDataFromRepo();
-
-  const dataYaml = Buffer.from(response.content, "base64").toString();
-  return yaml.load(dataYaml) as YamlData;
+export const getTrack = async (path: string) => {
+  const {
+    data: { name, size, content },
+  } = await octokit.request({
+    url: `/repos/${config.owner}/${config.repo}/contents/${path}`,
+  });
+  return {
+    name,
+    size,
+    content,
+  };
 };
