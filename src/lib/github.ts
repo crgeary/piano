@@ -22,14 +22,11 @@ export const getTimelineData = async () => {
 };
 
 export const getTrack = async (path: string) => {
-  const {
-    data: { name, size, content },
-  } = await octokit.request({
+  const { data } = await octokit.request({
     url: `/repos/${config.owner}/${config.repo}/contents/${path}`,
   });
   return {
-    name,
-    size,
-    content,
+    name: data.name,
+    url: data.download_url,
   };
 };
