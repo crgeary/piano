@@ -8,7 +8,7 @@ const notes = ["A", "B", "C", "D", "E", "F", "G"];
 const sharps = ["A", "C", "D", "F", "G"];
 
 export type KeyboardProps = ComponentPropsWithoutRef<"div"> & {
-    activeNotes: string[];
+    activeNotes?: string[];
 };
 
 export const Keyboard: FC<KeyboardProps> = ({ className, activeNotes, ...props }) => {
@@ -22,12 +22,12 @@ export const Keyboard: FC<KeyboardProps> = ({ className, activeNotes, ...props }
                 }
                 return (
                     <React.Fragment key={i}>
-                        <Natural isActive={activeNotes.includes(`${note}${octave}`)}>
+                        <Natural isActive={activeNotes?.includes(`${note}${octave}`)}>
                             {note}
                         </Natural>
                         {sharps.includes(note) && i !== naturalKeyCount - 1 && (
                             <Sharp
-                                isActive={activeNotes.includes(
+                                isActive={activeNotes?.includes(
                                     `${notes[(i + 1) % notes.length]}b${octave}`,
                                 )}
                             />
